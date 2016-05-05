@@ -1,0 +1,66 @@
+[System]
+Name='Untitled'
+Type='mamdani'
+Version=2.0
+NumInputs=4
+NumOutputs=1
+NumRules=5
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Recency_(months)'
+Range=[0 74]
+NumMFs=5
+MF1='rat_gan_day':'trimf',[-18.5 8.882e-016 18.5]
+MF2='gan_day':'trimf',[0 18.5 37]
+MF3='lau':'trimf',[18.5 37 55.5]
+MF4='kha_lau':'trimf',[37 55.5 74]
+MF5='rat_lau':'trimf',[55.5 74 92.5]
+
+[Input2]
+Name='Frequency_(times)'
+Range=[1 50]
+NumMFs=5
+MF1='rat_hiem':'trimf',[-11.25 1 13.25]
+MF2='hiem':'trimf',[1 13.25 25.5]
+MF3='trung_binh':'trimf',[13.25 25.5 37.75]
+MF4='nhieu':'trimf',[25.5 37.75 50]
+MF5='rat_nhieu':'trimf',[37.75 50 62.25]
+
+[Input3]
+Name='Monetary_(c.c._blood)'
+Range=[250 12500]
+NumMFs=5
+MF1='rat_it':'trimf',[250 250 2000]
+MF2='it':'trimf',[1000 3000 5000]
+MF3='binh_thuong':'trimf',[3000 5500 8000]
+MF4='nhieu':'trimf',[6000 8000 10000]
+MF5='rat_nhieu':'trapmf',[8000 10000 15300 19600]
+
+[Input4]
+Name='Time_(months)'
+Range=[2 98]
+NumMFs=5
+MF1='rat_moi':'trimf',[-22 2 26]
+MF2='moi':'trimf',[2 26 50]
+MF3='trung_binh':'trimf',[26 50 74]
+MF4='lau':'trimf',[50 74 98]
+MF5='rat_lau':'trimf',[74.2539682539683 98.2539682539683 122.253968253968]
+
+[Output1]
+Name='donated_blood_in_March_2007'
+Range=[0 1]
+NumMFs=2
+MF1='khong_hien':'trimf',[-1 0 1]
+MF2='co_hien':'trimf',[0 1 2]
+
+[Rules]
+1 1 1 1, 1 (0.75) : 1
+2 1 1 2, 1 (0.74) : 1
+2 1 1 3, 1 (0.76) : 1
+2 1 1 4, 1 (0.86) : 1
+2 1 1 5, 1 (0.91) : 1
